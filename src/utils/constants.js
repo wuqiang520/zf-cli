@@ -10,3 +10,5 @@ export const DEFAULTS = {
   registry: 'wuqiang520',
   type:'users'  //users|orgs
 }
+// 下载目录
+export const DOWNLOAD = `${HOME}/.template`;

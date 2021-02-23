@@ -32,9 +32,13 @@ export let remove = async(k)=>{
   let has = await exists(RC)
   let opts;
   if(has){
+    console.log(2)
     opts = await readFile(RC,'utf8')
+    console.log('opts',opts)
     opts = decode(opts)
+    console.log('decode:',opts)
     delete opts[k]
+    console.log('delete',opts)
     await writeFile(RC,encode(opts),'utf-8')
   }
 }

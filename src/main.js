@@ -13,6 +13,14 @@ let actionMap = {
       'zf-cli install'
     ]
   },
+  create: {
+    alias: 'c',
+    description: 'create project',
+    examples: [
+      'zf-cli create <projectName>',
+      'zf-cli c <projectName>'
+    ]
+  },
   config:{
     alias: 'c',
     description: 'config .zfclirc',
@@ -35,12 +43,16 @@ Object.keys(actionMap).forEach(action=>{
   .description(actionMap[action].description)
   .action(function(cmd, options){
     //判断当前操作
-    if(action === 'install' || action === 'i'){
-      main(action)
-    }else if(action === 'config'){
-      //实现可以更改配置文件
-      main(action,...process.argv.slice(3))
-    }
+    main(action,...process.argv.slice(3))
+
+    // if(action === 'install' || action === 'i'){
+    //   main(action,...process.argv.slice(3))
+    // }else if(action === 'config'){
+    //   //实现可以更改配置文件
+    //   main(action,...process.argv.slice(3))
+    // }else{
+    //   main(action)
+    // }
     console.log(action)
   });
 })
