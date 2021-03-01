@@ -1,7 +1,7 @@
-import {repoList,tagList,downloadLocal} from './utils/git'
-import ora from 'ora'
-import inquirer from 'inquirer'
-let install = async() =>{
+const {repoList,tagList,downloadLocal} = require('../utils/git')
+const ora = require('ora')
+const inquirer = require('inquirer')
+const install = async() =>{
   // 下载模板 选择模板使用
   // 通过配置文件 获取模板信息（有哪些模板）
   let loading = ora('fetching template......')
@@ -46,8 +46,7 @@ let install = async() =>{
   }
   
   console.log(answer.tag)
-  // 下载文件（先下载到缓存文件中）
-  // zf-cli init
+  // 下载文件（先下载到缓存文件中
   loading = ora('download project......')
   loading.start();
   await downloadLocal(project, tag)
@@ -55,4 +54,4 @@ let install = async() =>{
 
 
 }
-export default install;
+module.exports.default = install;

@@ -1,12 +1,12 @@
-import {RC,DEFAULTS} from './constants'
-import {encode,decode} from 'ini'
-import {promisify} from 'util'
-import fs from 'fs'
-let exists = promisify(fs.exists)
-let readFile = promisify(fs.readFile);
-let writeFile = promisify(fs.writeFile);
+const {RC,DEFAULTS} = require('./constants')
+const {encode,decode} = require('ini')
+const {promisify} = require('util')
+const fs = require('fs')
+const exists = promisify(fs.exists)
+const readFile = promisify(fs.readFile);
+const writeFile = promisify(fs.writeFile);
 // RC是配置文件 DEFAULTS是默认配置
-export let get = async(k)=>{
+const get = async(k)=>{
    let has = await exists(RC)
    let opts;
    if(has){
@@ -16,7 +16,7 @@ export let get = async(k)=>{
    }
    return ''
 }
-export let set = async(k,v)=>{
+const set = async(k,v)=>{
   let has = await exists(RC)
   let opts;
   if(has){
@@ -28,7 +28,7 @@ export let set = async(k,v)=>{
   }
   await writeFile(RC,encode(opts),'utf-8')
 }
-export let remove = async(k)=>{
+const remove = async(k)=>{
   let has = await exists(RC)
   let opts;
   if(has){
@@ -42,9 +42,15 @@ export let remove = async(k)=>{
     await writeFile(RC,encode(opts),'utf-8')
   }
 }
-export let getAll = async()=>{
+const getAll = async()=>{
   let opts;
   opts = await readFile(RC,'utf8')
   opts = decode(opts)
   return opts
+}
+module.exports = {
+  get,
+  set,
+  remove,
+  getAll
 }

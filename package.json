@@ -25,7 +25,7 @@
     "watch": "npm run compile -- --watch"
   },
   "bin": {
-    "zf-cli": "./bin/www"
+    "zf-cli": "./bin/zf"
   },
   "author": "",
   "license": "ISC"

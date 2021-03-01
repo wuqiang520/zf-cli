@@ -1,8 +1,8 @@
 // 管理.zfclirc文件（当前用户目录下）
 
 // zf-cli config set key value
-import {get, set, remove, getAll} from './utils/rc'
-let config = async(action,k,v)=>{
+const {get, set, remove, getAll} =  require('../utils/rc')
+const config = async(action,k,v)=>{
  switch(action){
    case 'get':
      if(k){
@@ -25,4 +25,4 @@ let config = async(action,k,v)=>{
      break;
  }
 }
-export default config
+module.exports.default = config

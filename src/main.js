@@ -1,7 +1,7 @@
-import program from 'commander'
-import {VERSION} from './utils/constants'
-import main from './index'
-import "babel-polyfill"
+const program = require('commander');
+const {VERSION} = require('./utils/constants')
+const main =  require('./index')
+// import "babel-polyfill"
 // zf-cli config
 // zf-cli install
 let actionMap = {
@@ -22,7 +22,7 @@ let actionMap = {
     ]
   },
   config:{
-    alias: 'c',
+    alias: 'con',
     description: 'config .zfclirc',
     examples: [
       'zf-cli config set <key> <value>',
@@ -43,6 +43,7 @@ Object.keys(actionMap).forEach(action=>{
   .description(actionMap[action].description)
   .action(function(cmd, options){
     //判断当前操作
+    console.log(main)
     main(action,...process.argv.slice(3))
 
     // if(action === 'install' || action === 'i'){
@@ -53,7 +54,6 @@ Object.keys(actionMap).forEach(action=>{
     // }else{
     //   main(action)
     // }
-    console.log(action)
   });
 })
 

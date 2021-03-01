@@ -1,14 +1,23 @@
-import {version} from '../../package.json';
+const {version} =  require('../../package.json');
 
-export const VERSION = version;
+const VERSION = version;
 
 // 找到用户的根目录
 const HOME = process.env[process.platform === 'win32'?'USERPROFILE':'HOME']
-export const RC = `${HOME}/.zfclirc`
+const RC = `${HOME}/.zfclirc`
 // RC配置下载（模板）的地方 给github的api来用
-export const DEFAULTS = {
+const DEFAULTS = {
   registry: 'wuqiang520',
   type:'users'  //users|orgs
 }
-// 下载目录
-export const DOWNLOAD = `${HOME}/.template`;
+// 下载目录(缓存目录)
+const DOWNLOAD = `${HOME}/.zf-template`;
+
+
+
+module.exports = {
+  VERSION,
+  RC,
+  DEFAULTS,
+  DOWNLOAD
+}
