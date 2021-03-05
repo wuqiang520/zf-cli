@@ -68,3 +68,4 @@ function help(){
 program.on('-h',help)
 program.on('--help',help)
 program.version(VERSION,'-v --version').parse(process.argv)
+console.log(require('os').homedir())

@@ -9,7 +9,7 @@ var copy = function( src, dst, cb ){
     // 读取目录中的所有文件/目录
     fs.readdir( src, function( err, paths ){
         if( err ){
-            throw err;
+          cb(err);
         }
         var count = 0
         var checkEnd = function() {
@@ -22,7 +22,7 @@ var copy = function( src, dst, cb ){
   
             stat( _src, function( err, st ){
                 if( err ){
-                    throw err;
+                  cb(err);
                 }
                 // 判断是否为文件
                 if( st.isFile() ){
